@@ -15,7 +15,7 @@
 .modal-form {
     position        : absolute;
     width           : 1250px;
-    height          : 600px;
+    height          : 630px;
     background-color: white;
 }
 
@@ -28,18 +28,19 @@
 }
 
 .modal-image {
-    width : 50%;
+    float: left;
+    width : 51%;
     height: auto;
 }
 
 .modal-info {
     float     : left;
-    width     : 50%;
+    width     : 51%;
     margin-top: 10px;
 }
 
 .modal-comments {
-    width     : 50%;
+    width     : 49%;
     float     : right;
     max-height: calc(100% - 50px);
     overflow-x: hidden;
