@@ -67,6 +67,10 @@ class Main extends React.Component {
                                 key={item.id} id={item.id} src={`${item.url}`} alt="Can't be download" />
                         ))}
                     </div>
+                    <footer className="footer">
+                        <hr/>
+                        <p>© 2018-2019</p>
+                    </footer>
                     {this.state.modalIsOpen && <Portal><Modal id={this.state.id} toggle={this.toggleModal} /></Portal>}
                 </>
             )

@@ -35,8 +35,8 @@ class Modal extends React.Component {
                 comment: this.state.comment
             })
         })
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error))
+            .then((response) => { if (!response.ok) { alert("ERROR!"); } else { this.setState({ name: '', comment: '' }) } })
+            .catch((error) => alert(error))
         event.preventDefault();
     }
 
@@ -46,7 +46,6 @@ class Modal extends React.Component {
             .then(res => res.json())
             .then(
                 (result) => {
-                    console.log(result);
                     this.setState({
                         isLoaded: true,
                         items: result
@@ -63,7 +62,6 @@ class Modal extends React.Component {
 
     render() {
         const { error, isLoaded, items } = this.state;
-        const comments = items.comments;
         if (error) {
             return <div>Ошибка: {error.message}</div>;
         } else if (!isLoaded) {
@@ -75,23 +73,29 @@ class Modal extends React.Component {
                     <form className="modal-form" onSubmit={this.handleSubmit}>
                         <span className="modal-button__close" onClick={() => { this.props.toggle() }}></span>
                         <div className="modal-container">
-                            <div className="modal-side__left">
-                                <img className="modal-image" src={`${this.state.items.url}`} alt={`${this.state.items}`} />
-                                <label className="modal-input">
-                                    <input type="text" name="name" placeholder="Ваше имя" onChange={this.handleInputChange} />
-                                </label>
-                                <label className="modal-input">
-                                    <input type="text" name="comment" placeholder="Ваша фамилия" onChange={this.handleInputChange} />
-                                </label>
-                                <input className="modal-submit" type="submit" value="Оставить комментарий" />
-                            </div>
-                            <div className="modal-side__right">
-                                {comments.map(item => (
-                                    <p key={item.id}>{item.text}</p>
+
+                            <img className="modal-image" src={`${this.state.items.url}`} alt={`${this.state.items}`} />
+
+                            <div className="modal-comments">
+                                {items.comments.map(item => (
+                                    <p className="modal-comments__piece" key={item.id}>{item.text}</p>
                                 ))}
                             </div>
-                        </div>
 
+                            <div className="modal-info">
+
+                                <label className="modal-input">
+                                    <input type="text" name="name" placeholder="Ваше имя" onChange={this.handleInputChange} value={this.state.name} />
+                                </label>
+
+                                <label className="modal-input">
+                                    <input type="text" name="comment" placeholder="Ваш комментарий" onChange={this.handleInputChange} value={this.state.comment} />
+                                </label>
+
+                                <input className="modal-submit" type="submit" value="Оставить комментарий" />
+
+                            </div>
+                        </div>
                     </form>
                 </div>
             )

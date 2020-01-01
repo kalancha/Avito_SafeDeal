@@ -12,58 +12,80 @@
 
 }
 
-.modal-container{
-    display: flex;
-}
-
-.modal-side__left {
-    display       : flex;
-    flex-direction: column;
-    padding-left  : 30px;
-    padding-top   : 30px;
-    width         : 50%;
-}
-
 .modal-form {
     position        : absolute;
-    width           : 659px;
-    height          : 380px;
+    width           : 1250px;
+    height          : 600px;
     background-color: white;
 }
 
+.modal-container {
+    margin-top  : 30px;
+    margin-left : 30px;
+    margin-right: 30px;
+    height      : 100%;
+    grid-gap    : 15px;
+}
 
 .modal-image {
-    width : 100%;
+    width : 50%;
     height: auto;
 }
 
-.modal-input {
-    padding-top: 10px;
+.modal-info {
+    float     : left;
+    width     : 50%;
+    margin-top: 10px;
+}
+
+.modal-comments {
+    width     : 50%;
+    float     : right;
+    max-height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.modal-input:nth-child(1) {
+    margin-top: 15px;
 }
 
 .modal-input input {
-    width : calc(100% - 4px);
-    height: 15px;
+    margin-top: 20px;
+
+    width : 100%;
+    height: 30px;
+
+    background   : #FFFFFF;
+    border       : 1px solid #CCCCCC;
+    box-sizing   : border-box;
+    border-radius: 3px;
 }
 
 .modal-submit {
-    margin-top: 10px;
-    width     : 100%;
+    margin-top   : 19px;
+    width        : 100%;
+    background   : #4997D0;
+    border-radius: 3px;
+    font-family  : Roboto;
+    font-style   : normal;
+    font-weight  : normal;
+    font-size    : 13px;
+    line-height  : 20px;
+    border       : none;
+
+    height: 30px;
+    color : white;
 }
 
 .modal-button__close {
-    position    : absolute;
-    float       : right;
-    opacity     : 0.4;
-    top  : 12px;
-    right: 6px;
-    width       : 18px;
-    height      : 18px;
-
-}
-
-.modal-button__close:hover {
-    opacity: 1;
+    position: absolute;
+    float   : right;
+    top     : 12px;
+    right   : 6px;
+    width   : 18px;
+    height  : 18px;
 
 }
 
@@ -84,15 +106,128 @@
     transform: rotate(-45deg);
 }
 
-.modal-side__right{
-    flex:1;
-    text-align: center;
-    padding-top: 30px;
-    padding-right: 30px;
-}
-
 #modal-root {
     overflow: hidden;
     position: relative;
     z-index : 999;
+}
+
+.modal-comments__piece {
+    margin-left: 20px;
+    font-family: Roboto;
+    font-style : normal;
+    font-weight: normal;
+    font-size  : 18px;
+    line-height: 25px;
+    padding    : 10px 0;
+}
+
+@media (min-width:800px) and (max-width:1200px) {
+
+    .modal-form {
+        width : 850px;
+        height: 490px;
+    }
+
+}
+
+@media (min-width:600px) and (max-width:800px) {
+
+    .modal {
+        align-items: flex-start;
+    }
+
+    .modal-form {
+        top: 181px;
+    }
+
+    .modal-comments__piece {
+        font-size: 13px;
+    }
+
+    .modal-form {
+        width : 619px;
+        height: 425px;
+    }
+
+    .modal-image {
+        width : 331px;
+        height: 205px;
+    }
+
+    .modal-info {
+        float: left;
+        width: 331px;
+    }
+
+    .modal-comments {
+        width     : calc(100% - 331px);
+        max-height: calc(100% - 70px);
+    }
+}
+
+@media (max-width:600px) {
+    .modal-form {
+        width : 100%;
+        height: 100%;
+    }
+
+    .modal-image {
+        width      : 100%;
+        height     : auto;
+        flex-shrink: 0;
+    }
+
+    .modal-info {
+        width        : auto;
+        margin       : 0 22px;
+        margin-bottom: 20px;
+        margin-top   : 10px;
+    }
+
+    .modal-container {
+        display       : flex;
+        flex-direction: column;
+        margin        : 0;
+    }
+
+    .modal-comments {
+        width      : 100%;
+        overflow   : auto;
+        flex-shrink: 1;
+        margin-top : 15px;
+    }
+
+    .modal-comments__piece {
+        font-style : normal;
+        font-weight: normal;
+        font-size  : 13px;
+        line-height: 15px;
+        margin-left: 22px;
+    }
+}
+
+*::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius     : 10px;
+    background-color  : #F5F5F5;
+}
+
+*::-webkit-scrollbar {
+    width           : 10px;
+    background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius     : 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color  : rgba(0, 0, 0, .8);
+}
+
+input[placeholder] {
+    padding-left: 11px;
+    font-family : Roboto;
+    font-style  : normal;
+    font-weight : normal;
+    font-size   : 13px;
 }
